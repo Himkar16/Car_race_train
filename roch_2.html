@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#road{
+  background-color: lightgrey;
+  width: 500px;
+  
+  height: 680px;
+ 
+  margin-left: 400px;
+  margin-right: 100px;
+  position:relative;
+}
+#animate1{
+  background-color:black;
+  width: 10px;
+  
+  height: 100px;
+  
+  margin-left: 250px;
+  margin-right: 100px;
+  position:absolute;
+}
+#animate2{
+  background-color:black;
+  width: 10px;
+  
+  height: 100px;
+  
+  margin-left: 250px;
+  margin-right: 100px;
+  position:absolute;
+}
+#animate3{
+  background-color:black;
+  width: 10px;
+  
+  height: 100px;
+  
+  margin-left: 250px;
+  margin-right: 100px;
+  position:absolute;
+}
+#car{
+  background-color:red;
+  width: 25px;
+  
+  height: 0px;
+  
+  margin-left: 0px;
+  margin-top: 0px;
+  position:absolute;
+}
+#enemy_car1{
+  background-color:green;
+  width: 25px;
+  
+  height: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+  position:absolute;
+}
+#enemy_car2{
+  background-color:green;
+  width: 25px;
+  
+  height: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+  position:absolute;
+}
+#enemy_car3{
+  background-color:green;
+  width: 25px;
+  
+  height: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+  position:absolute;
+}
+#enemy_car4{
+  background-color:green;
+  width: 25px;
+  
+  height: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+  position:absolute;
+}
+#score{
+	margin-left:350px;
+}
+</style>
+</head>
+
+
+
+
+<body style="background-color:grey;">
+
+
+<p id="GFG_UP" style="font-size: 16px;"> 
+       
+    </p> 
+    
+    <p id="GFG_DOWN" 
+       style="color:green;  
+              font-size: 20px; 
+              font-weight: bold;"> 
+    </p> 
+
+   
+	
+<div id ="road">
+	<div id="animate1"></div>
+	<div id="animate2"></div>
+	<div id="animate3"></div>
+	<div id="car"></div>
+	<div id="enemy_car1"></div>
+	<div id="enemy_car2"></div>
+	<div id="enemy_car3"></div>
+	<div id="enemy_car4"></div>
+	<div id ="score">
+		<p id ="sc">000</p>
+	</div>
+	<p><button onclick="myMove()">Click Me</button></p> 
+	
+</div>
+
+
+
+<script>
+var flag_game_running;
+function myMove() {
+	flag_game_running=1;
+/*	
+  var id5 = setInterval(enemy_generator, 1000);
+  var itr=0;
+  function enemy_generator() {
+  
+    if (pos1 == 630) {
+      pos1=0;
+	  elem1 .style.top = pos1 + "px"; 
+    } else {
+      pos1++; 
+      elem1.style.top = pos1 + "px"; 
+       
+    }
+  }
+	
+*/	
+	
+  var elem1 = document.getElementById("animate1");   
+  var pos1 = 0;
+  
+  var elem2 = document.getElementById("animate2");   
+  var pos2 = 210;
+  
+  var elem3 = document.getElementById("animate3");   
+  var pos3 = 420;
+  
+  var enem1 = document.getElementById("enemy_car1");   
+  var enem_pos_y1 = 0;
+  
+  var enem2 = document.getElementById("enemy_car2");   
+  var enem_pos_y2 = 110;
+  
+  var enem3 = document.getElementById("enemy_car3");   
+  var enem_pos_y3 = 215;
+  
+  var enem4 = document.getElementById("enemy_car4");   
+  var enem_pos_y4 = 320;
+  
+  enem1.style.left= Math.random()*475+"px";
+  enem2.style.left= Math.random()*475+"px";
+  enem3.style.left= Math.random()*475+"px";
+  enem4.style.left= Math.random()*475+"px";
+  enem1.style.top= enem_pos_y1+"px";
+  enem2.style.top= enem_pos_y2+"px";
+  enem3.style.top= enem_pos_y3+"px";
+  enem4.style.top= enem_pos_y4+"px";
+  enem1.style.height="40px";
+  enem2.style.height="40px";
+  enem3.style.height="40px";
+  enem4.style.height="40px";
+  
+  var player_score=0;
+  var curr_x_pos=250;
+  var curr_y_pos=640;
+  var player_car=document.getElementById("car");
+  player_car.style.left = curr_x_pos + "px"; 
+  player_car.style.top = curr_y_pos+"px";
+  player_car.style.height="40px";
+  var id1 = setInterval(frame1, 5);
+  function frame1() {
+  
+    if (pos1 == 630) {
+      pos1=0;
+	  elem1 .style.top = pos1 + "px"; 
+    } else {
+      pos1++; 
+      elem1.style.top = pos1 + "px"; 
+       
+    }
+	if (pos2 == 630) {
+      pos2=0;
+	  elem2.style.top = pos2 + "px"; 
+    } else {
+      pos2++; 
+      elem2.style.top = pos2 + "px"; 
+       
+    }
+	if (pos3 == 630) {
+      pos3=0;
+	  elem3.style.top = pos3 + "px"; 
+    } else {
+      pos3++; 
+      elem3.style.top = pos3 + "px"; 
+       
+    }
+	
+	
+	
+	if (enem_pos_y1 +2>= 630) {
+      enem_pos_y1=0;
+	  enem1.style.top = enem_pos_y1 + "px"; 
+	  enem1.style.left= Math.random()*475+"px";
+	  player_score++;
+	  
+    } else {
+      enem_pos_y1=enem_pos_y1+2; 
+      enem1.style.top = enem_pos_y1 + "px"; 
+       
+    }
+	if (enem_pos_y2 +2>= 630) {
+      enem_pos_y2=0;
+	  enem2.style.top = enem_pos_y2 + "px"; 
+	  enem2.style.left= Math.random()*475+"px";
+	  player_score++;
+    } else {
+      enem_pos_y2=enem_pos_y2+2; 
+      enem2.style.top = enem_pos_y2 + "px"; 
+       
+    }
+	if (enem_pos_y3 +2>= 630) {
+      enem_pos_y3=0;
+	  enem3.style.top = enem_pos_y3 + "px"; 
+	  enem3.style.left= Math.random()*475+"px";
+	  player_score++;
+    } else {
+      enem_pos_y3=enem_pos_y3+2; 
+      enem3.style.top = enem_pos_y3 + "px"; 
+       
+    }
+	if (enem_pos_y4 +2>= 630) {
+      enem_pos_y4=0;
+	  enem4.style.top = enem_pos_y4 + "px"; 
+	  enem4.style.left= Math.random()*475+"px";
+	  player_score++;
+    } else {
+      enem_pos_y4=enem_pos_y4+2; 
+      enem4.style.top = enem_pos_y4 + "px"; 
+       
+    }
+	document.getElementById("sc").innerHTML=player_score;
+	var player_car=document.getElementById("car");
+	
+	var posx_pc=parseInt(player_car.style.left, 10);
+	var posx_e1=parseInt(enem1.style.left, 10);
+	var posx_e2=parseInt(enem2.style.left, 10);
+	var posx_e3=parseInt(enem3.style.left, 10);
+	var posx_e4=parseInt(enem4.style.left, 10);
+	
+	var posy_pc=parseInt(player_car.style.top, 10);
+	var posy_e1=parseInt(enem1.style.top, 10);
+	var posy_e2=parseInt(enem2.style.top, 10);
+	var posy_e3=parseInt(enem3.style.top, 10);
+	var posy_e4=parseInt(enem4.style.top, 10);
+	
+	//window.alert(Math.abs(posx_e1 - posx_pc));
+	if(Math.abs(posx_e1 - posx_pc)<25 && Math.abs(posy_e1 - posy_pc)<40)
+	{
+		//window.alert(posx_e1 - posx_pc);
+		clearInterval(id1);
+		flag_game_running=0;
+	}
+	if(Math.abs(posx_e2 - posx_pc)<25 && Math.abs(posy_e2 - posy_pc)<40)
+	{
+		//window.alert(posx_e1 - posx_pc);
+		clearInterval(id1);
+		flag_game_running=0;
+	}
+	if(Math.abs(posx_e3 - posx_pc)<25 && Math.abs(posy_e3 - posy_pc)<40)
+	{
+		//window.alert(posx_e1 - posx_pc);
+		clearInterval(id1);
+		flag_game_running=0;
+	}
+	if(Math.abs(posx_e4 - posx_pc)<25 && Math.abs(posy_e4 - posy_pc)<40)
+	{
+		//window.alert(posx_e1 - posx_pc);
+		clearInterval(id1);
+		flag_game_running=0;
+	}
+	
+	
+  }
+  
+  
+  
+  //car data
+  
+   
+  var el_up = document.getElementById("GFG_UP"); 
+  var el_down = document.getElementById("GFG_DOWN"); 
+  var str = 'No key pressed'; 
+ 
+  function gfg_Run() { 
+            
+  } 
+  gfg_Run();
+  document.onkeydown = function(e) { 
+            switch (e.keyCode) { 
+                case 37: 
+                    str = 'Left Key pressed!'; 
+					if(flag_game_running==0)
+						break;
+					if(curr_x_pos-10>0)
+					{
+						curr_x_pos-=10;
+						player_car.style.left = curr_x_pos + "px"; 
+					}
+                    break; 
+                case 38: 
+                    str = 'Up Key pressed!'; 
+					if(flag_game_running==0)
+						break;
+					if(curr_y_pos-10>0)
+					{
+						curr_y_pos-=10;
+						player_car.style.top = curr_y_pos + "px"; 
+					}
+                    break; 
+                case 39: 
+                    str = 'Right Key pressed!'; 
+					if(flag_game_running==0)
+						break;
+					if(curr_x_pos+10<475)
+					{
+						curr_x_pos+=10;
+						player_car.style.left = curr_x_pos+"px";
+					}
+                    break; 
+                case 40: 
+                    str = 'Down Key pressed!'; 
+					if(flag_game_running==0)
+						break;
+					if(curr_y_pos+10<640)
+					{
+						curr_y_pos+=10;
+						player_car.style.top = curr_y_pos+"px";
+					}
+                    break; 
+            } 
+			gfg_Run();
+  };   
+		
+	
+}
+  
+  
+</script>
+
+
+
+</body>
+</html>
