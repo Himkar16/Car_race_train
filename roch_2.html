@@ -4,89 +4,34 @@
 <style>
 #road{
   background-color: lightgrey;
-  width: 500px;
-  
-  height: 680px;
- 
+  width: 500px;  
+  height: 680px; 
   margin-left: 400px;
   margin-right: 100px;
   position:relative;
 }
-#animate1{
+#animate1, #animate2, #animate3{
   background-color:black;
-  width: 10px;
-  
-  height: 100px;
-  
+  width: 10px;  
+  height: 100px;  
   margin-left: 250px;
   margin-right: 100px;
   position:absolute;
 }
-#animate2{
-  background-color:black;
-  width: 10px;
-  
-  height: 100px;
-  
-  margin-left: 250px;
-  margin-right: 100px;
-  position:absolute;
-}
-#animate3{
-  background-color:black;
-  width: 10px;
-  
-  height: 100px;
-  
-  margin-left: 250px;
-  margin-right: 100px;
+
+#car, #enemy_car1, #enemy_car2, #enemy_car3, #enemy_car4{
+  /* background-color:red; */
+  width: 25px;  
+  height: 0px;  
+  margin-left: 0px;
+  margin-top: 0px;
   position:absolute;
 }
 #car{
-  background-color:red;
-  width: 25px;
-  
-  height: 0px;
-  
-  margin-left: 0px;
-  margin-top: 0px;
-  position:absolute;
+  background-color: red;
 }
-#enemy_car1{
+#enemy_car1, #enemy_car2, #enemy_car3, #enemy_car4{
   background-color:green;
-  width: 25px;
-  
-  height: 0px;
-  margin-left: 0px;
-  margin-top: 0px;
-  position:absolute;
-}
-#enemy_car2{
-  background-color:green;
-  width: 25px;
-  
-  height: 0px;
-  margin-left: 0px;
-  margin-top: 0px;
-  position:absolute;
-}
-#enemy_car3{
-  background-color:green;
-  width: 25px;
-  
-  height: 0px;
-  margin-left: 0px;
-  margin-top: 0px;
-  position:absolute;
-}
-#enemy_car4{
-  background-color:green;
-  width: 25px;
-  
-  height: 0px;
-  margin-left: 0px;
-  margin-top: 0px;
-  position:absolute;
 }
 #score{
 	margin-left:350px;
@@ -94,13 +39,9 @@
 </style>
 </head>
 
-
-
-
 <body style="background-color:grey;">
 
-
-<p id="GFG_UP" style="font-size: 16px;"> 
+  <p id="GFG_UP" style="font-size: 16px;"> 
        
     </p> 
     
@@ -109,8 +50,6 @@
               font-size: 20px; 
               font-weight: bold;"> 
     </p> 
-
-   
 	
 <div id ="road">
 	<div id="animate1"></div>
@@ -369,10 +308,6 @@ function myMove() {
 	
 }
   
-  
 </script>
-
-
-
 </body>
 </html>
